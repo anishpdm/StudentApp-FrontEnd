@@ -1,25 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import AddStudent from './components/AddStudent';
+import SearchStudent from './components/SearchStudent';
+import { BrowserRouter, Route, Routes,Navigate } from 'react-router-dom';
+import ViewAllStudents from './components/ViewAllStudents';
+import ProtectedRoute from "react-protected-route-component";
+import {RequireAuth} from './components/Auth'
+
 
 function App() {
+
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+{/* <Routes>
+        <Route path="/" component={<SearchStudent />} exact />
+        <Route
+  path="/protected"
+  component={
+    <RequireAuth>
+      <AddStudent />
+    </RequireAuth>
+  }
+/>
+   
+
+
+      </Routes> */}
+
+    <Routes>
+      <Route path='' element={<AddStudent/>} />
+      <Route path='search' element={<SearchStudent/>} />
+      <Route path='viewall' element={<ViewAllStudents/>} />
+
+    </Routes>
+    
+    </BrowserRouter>
   );
 }
+
+
 
 export default App;
